@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ontario Biker Wingman</title>
+    <style>
+        :root { --biker-red: #c0392b; --asphalt: #2c3e50; }
+        body { background: var(--asphalt); color: white; font-family: 'Arial Black', sans-serif; text-align: center; padding: 20px; }
+        .app-box { background: #34495e; border: 3px solid var(--biker-red); border-radius: 20px; padding: 25px; max-width: 400px; margin: 0 auto; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
+        h1 { margin: 0; font-size: 24px; color: var(--biker-red); text-transform: uppercase; }
+        p { font-size: 14px; margin-bottom: 20px; }
+        input { width: 85%; padding: 12px; margin: 8px 0; border-radius: 5px; border: none; font-size: 16px; }
+        .stops { text-align: left; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin: 15px 0; }
+        label { font-size: 14px; cursor: pointer; }
+        .go-btn { background: var(--biker-red); color: white; border: none; padding: 18px; width: 100%; border-radius: 50px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+        .go-btn:hover { background: #a93226; transform: scale(1.02); }
+        .footer-joke { margin-top: 20px; font-size: 11px; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <div class="app-box">
+        <h1>ONTARIO WINGMAN 🏍️</h1>
+        <p><i>The Step-Dad's Road Assistant</i></p>
+        
+        <input type="text" id="start" placeholder="Starting Point (e.g. Bowmanville)">
+        <input type="text" id="end" placeholder="Destination (e.g. Gravenhurst)">
+
+        <div class="stops">
+            <strong>Add Stops For:</strong><br><br>
+            <input type="checkbox" id="tart" checked> <label for="tart">Butter Tarts / Bakeries 🥧</label><br>
+            <input type="checkbox" id="gas" checked> <label for="gas">Shell / Petro (Gas) ⛽</label><br>
+            <input type="checkbox" id="burger"> <label for="burger">Roadside Diners 🍔</label><br>
+            <input type="checkbox" id="scenic"> <label for="scenic">Lake Views 🌊</label>
+        </div>
+
+        <button class="go-btn" onclick="startRide()">PLAN THE RIDE</button>
+
+        <div class="footer-joke" id="wisdom">
+            "Watch out for the OPP on the 401!"
+        </div>
+    </div>
+
+    <script>
+        function startRide() {
+            const start = document.getElementById('start').value;
+            const end = document.getElementById('end').value;
+            
+            if(!start || !end) {
+                alert("Enter the route, Boss!");
+                return;
+            }
+
+            // Creating a search query for Google Maps
+            let query = "";
+            if(document.getElementById('tart').checked) query += "+bakery+butter+tarts";
+            if(document.getElementById('gas').checked) query += "+gas+station";
+            if(document.getElementById('burger').checked) query += "+burgers+and+fries";
+            if(document.getElementById('scenic').checked) query += "+scenic+lookout";
+
+            const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(start)}&destination=${encodeURIComponent(end)}&travelmode=driving`;
+            
+            // Note: Google Maps usually opens the search query in the sidebar/nearby
+            window.open(mapsUrl, '_blank');
+            
+            document.getElementById('wisdom').innerText = "Ride safe. Keep the shiny side up!";
+        }
+    </script>
+</body>
+</html>
