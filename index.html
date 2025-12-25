@@ -3,172 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biker's Guide to Ontario</title>
+    <title>Ontario Biker Guide</title>
     <style>
-        :root {
-            --sign-green: #006a4e; /* Ontario Highway Green */
-            --sign-white: #ffffff;
-            --road-yellow: #ffcc00;
-        }
-
+        :root { --sign-green: #006a4e; --sign-white: #ffffff; --road-yellow: #ffcc00; }
         body {
             background: #1a1a1a;
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558981285-6f0c94958bb6?auto=format&fit=crop&q=80&w=2070');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--sign-white);
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            background-size: cover; background-position: center; background-attachment: fixed;
+            color: var(--sign-white); font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0;
         }
-
         .highway-sign {
-            background-color: var(--sign-green);
-            width: 90%;
-            max-width: 500px;
-            padding: 30px;
-            border: 8px solid var(--sign-white);
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            position: relative;
+            background-color: var(--sign-green); width: 90%; max-width: 500px; padding: 30px;
+            border: 8px solid var(--sign-white); border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
-
-        h1 {
-            text-transform: uppercase;
-            font-size: 2.2rem;
-            margin: 0;
-            letter-spacing: 2px;
-            border-bottom: 3px solid var(--sign-white);
-            padding-bottom: 10px;
-        }
-
-        .subtitle {
-            font-weight: bold;
-            margin-top: 10px;
-            display: block;
-            font-size: 1.1rem;
-        }
-
-        .form-group {
-            margin-top: 25px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        input[type="text"], select {
-            width: 100%;
-            padding: 12px;
-            border-radius: 5px;
-            border: none;
-            box-sizing: border-box;
-            font-size: 1rem;
-        }
-
-        /* Slider Styling */
-        .slider-container {
-            margin: 20px 0;
-        }
-
-        .slider {
-            width: 100%;
-            height: 10px;
-            border-radius: 5px;
-            background: var(--sign-white);
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background: var(--road-yellow);
-            cursor: pointer;
-            border: 2px solid var(--sign-green);
-        }
-
-        .value-display {
-            font-weight: bold;
-            color: var(--road-yellow);
-            float: right;
-        }
-
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-radius: 10px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-        }
-
-        .checkbox-item input {
-            margin-right: 10px;
-            width: 18px;
-            height: 18px;
-        }
-
-        .plan-btn {
-            background-color: var(--sign-white);
-            color: var(--sign-green);
-            border: none;
-            width: 100%;
-            padding: 15px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 25px;
-            transition: all 0.2s;
-        }
-
-        .plan-btn:hover {
-            background-color: var(--road-yellow);
-            transform: scale(1.03);
-        }
-
-        .footer-note {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            opacity: 0.9;
-            border-top: 1px dashed white;
-            padding-top: 10px;
-        }
+        h1 { text-transform: uppercase; font-size: 2rem; margin: 0; border-bottom: 3px solid var(--sign-white); padding-bottom: 10px; }
+        .form-group { margin-top: 20px; text-align: left; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; font-size: 0.8rem; }
+        input[type="text"] { width: 100%; padding: 12px; border-radius: 5px; border: none; box-sizing: border-box; font-size: 1rem; }
+        .slider-container { margin: 15px 0; }
+        .slider { width: 100%; height: 8px; border-radius: 5px; background: var(--sign-white); -webkit-appearance: none; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--road-yellow); cursor: pointer; border: 2px solid var(--sign-green); }
+        .value-display { font-weight: bold; color: var(--road-yellow); float: right; }
+        .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 10px; }
+        .plan-btn { background-color: var(--sign-white); color: var(--sign-green); border: none; width: 100%; padding: 15px; font-size: 1.4rem; font-weight: bold; text-transform: uppercase; border-radius: 10px; cursor: pointer; margin-top: 20px; }
+        .plan-btn:hover { background-color: var(--road-yellow); transform: scale(1.02); }
     </style>
 </head>
 <body>
 
     <div class="highway-sign">
         <h1>Biker's Guide</h1>
-        <span class="subtitle">ONTARIO ROAD ASSISTANT</span>
-
+        
         <div class="form-group">
-            <label>Starting Point</label>
-            <input type="text" id="start" placeholder="e.g. Toronto">
+            <label>Your House (Starting Point & Final End)</label>
+            <input type="text" id="home" placeholder="Your Address, Ontario">
         </div>
 
         <div class="form-group">
-            <label>Destination</label>
-            <input type="text" id="end" placeholder="e.g. Muskoka">
+            <label>Main Trip Destination</label>
+            <input type="text" id="destination" placeholder="e.g. Algonquin Park">
         </div>
 
         <div class="slider-container">
@@ -177,66 +51,66 @@
         </div>
 
         <div class="slider-container">
-            <label>Riding Buddies <span class="value-display" id="buddyLabel">1 Rider</span></label>
+            <label>Riding Buddies <span class="value-display" id="buddyLabel">Solo Ride</span></label>
             <input type="range" min="1" max="20" value="1" class="slider" id="buddySlider">
         </div>
 
         <div class="form-group">
-            <label>Custom Stops (e.g. Scenic Lookouts, Parks)</label>
-            <input type="text" id="customStops" placeholder="Any specific spots?">
+            <label>Extra Stops (Separate with commas)</label>
+            <input type="text" id="customStops" placeholder="e.g. Muskoka Lookout, Diner">
         </div>
 
         <div class="form-group">
             <label>Route Essentials</label>
             <div class="checkbox-grid">
-                <div class="checkbox-item"><input type="checkbox" id="gas" checked> Gas Stations</div>
-                <div class="checkbox-item"><input type="checkbox" id="food" checked> Roadside Diners</div>
-                <div class="checkbox-item"><input type="checkbox" id="rest"> Rest Areas</div>
-                <div class="checkbox-item"><input type="checkbox" id="lake"> Lake Views</div>
+                <div><input type="checkbox" id="gas" checked> Gas Stations</div>
+                <div><input type="checkbox" id="food" checked> Food</div>
+                <div><input type="checkbox" id="rest"> Rest Areas</div>
+                <div><input type="checkbox" id="lake"> Views</div>
             </div>
         </div>
 
-        <button class="plan-btn" onclick="buildRoute()">PLAN ROUTE</button>
-
-        <div class="footer-note">
-            Merry Christmas, Rio! Built with care. Watch for deer! 🦌
-        </div>
+        <button class="plan-btn" onclick="buildRoute()">PLAN ROUND TRIP</button>
     </div>
 
     <script>
-        // Update slider labels
-        const hourSlider = document.getElementById('hourSlider');
-        const hourLabel = document.getElementById('hourLabel');
-        hourSlider.oninput = function() { hourLabel.innerHTML = this.value + " Hours"; }
-
-        const buddySlider = document.getElementById('buddySlider');
-        const buddyLabel = document.getElementById('buddyLabel');
-        buddySlider.oninput = function() { 
-            buddyLabel.innerHTML = this.value == 1 ? "Solo Ride" : this.value + " Riders"; 
+        // UI Updates
+        document.getElementById('hourSlider').oninput = function() { document.getElementById('hourLabel').innerText = this.value + " Hours"; }
+        document.getElementById('buddySlider').oninput = function() { 
+            document.getElementById('buddyLabel').innerText = this.value == 1 ? "Solo Ride" : this.value + " Riders"; 
         }
 
         function buildRoute() {
-            const start = document.getElementById('start').value;
-            const end = document.getElementById('end').value;
-            const stops = document.getElementById('customStops').value;
-            
-            if(!start || !end) {
-                alert("Please enter a start and end point!");
+            const home = document.getElementById('home').value;
+            const dest = document.getElementById('destination').value;
+            const extraStops = document.getElementById('customStops').value;
+
+            if(!home || !dest) {
+                alert("Please enter both your House address and your Destination!");
                 return;
             }
 
-            // Generate Google Maps Search Query
-            let searchQuery = "";
-            if(document.getElementById('gas').checked) searchQuery += " gas stations";
-            if(document.getElementById('food').checked) searchQuery += " restaurants";
-            if(document.getElementById('rest').checked) searchQuery += " rest areas";
-            if(document.getElementById('lake').checked) searchQuery += " scenic lookouts";
-            if(stops) searchQuery += " " + stops;
+            // 1. Origin and Destination are BOTH 'home' for a round trip
+            const origin = encodeURIComponent(home);
+            const destination = encodeURIComponent(home);
 
-            const mapsUrl = `https://www.google.com/maps/dir/${encodeURIComponent(start)}/${encodeURIComponent(end)}/`;
+            // 2. The 'waypoints' are the actual stops in between
+            let stopsArray = [dest]; // Main destination is a stop
+            if (extraStops) {
+                extraStops.split(',').forEach(s => stopsArray.push(s.trim()));
+            }
+
+            // Add Search Essentials as waypoints
+            if(document.getElementById('gas').checked) stopsArray.push("gas stations near " + dest);
+            if(document.getElementById('food').checked) stopsArray.push("diners near " + dest);
             
-            // This opens the route. He can then use the "Search along route" feature in Maps
-            window.open(mapsUrl, '_blank');
+            const waypoints = encodeURIComponent(stopsArray.join('|'));
+
+            // 3. Construct the official Directions URL
+            // Format: https://www.google.com/maps/dir/?api=1&origin=...&destination=...&waypoints=...
+            const finalUrl = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}&waypoints=${waypoints}&travelmode=driving`;
+
+            window.open(finalUrl, '_blank');
         }
     </script>
 </body>
