@@ -3,68 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ontario Biker Wingman</title>
+    <title>Biker's Guide to Ontario</title>
     <style>
-        :root { --biker-red: #c0392b; --asphalt: #2c3e50; }
-        body { background: var(--asphalt); color: white; font-family: 'Arial Black', sans-serif; text-align: center; padding: 20px; }
-        .app-box { background: #34495e; border: 3px solid var(--biker-red); border-radius: 20px; padding: 25px; max-width: 400px; margin: 0 auto; box-shadow: 0 15px 35px rgba(0,0,0,0.6); }
-        h1 { margin: 0; font-size: 24px; color: var(--biker-red); text-transform: uppercase; }
-        p { font-size: 14px; margin-bottom: 20px; }
-        input { width: 85%; padding: 12px; margin: 8px 0; border-radius: 5px; border: none; font-size: 16px; }
-        .stops { text-align: left; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin: 15px 0; }
-        label { font-size: 14px; cursor: pointer; }
-        .go-btn { background: var(--biker-red); color: white; border: none; padding: 18px; width: 100%; border-radius: 50px; font-weight: bold; font-size: 18px; cursor: pointer; margin-top: 10px; transition: 0.2s; }
-        .go-btn:hover { background: #a93226; transform: scale(1.02); }
-        .footer-joke { margin-top: 20px; font-size: 11px; opacity: 0.6; }
+        :root {
+            --sign-green: #006a4e; /* Ontario Highway Green */
+            --sign-white: #ffffff;
+            --road-yellow: #ffcc00;
+        }
+
+        body {
+            background: #1a1a1a;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1558981285-6f0c94958bb6?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--sign-white);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .highway-sign {
+            background-color: var(--sign-green);
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            border: 8px solid var(--sign-white);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-size: 2.2rem;
+            margin: 0;
+            letter-spacing: 2px;
+            border-bottom: 3px solid var(--sign-white);
+            padding-bottom: 10px;
+        }
+
+        .subtitle {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        /* Slider Styling */
+        .slider-container {
+            margin: 20px 0;
+        }
+
+        .slider {
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: var(--sign-white);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--road-yellow);
+            cursor: pointer;
+            border: 2px solid var(--sign-green);
+        }
+
+        .value-display {
+            font-weight: bold;
+            color: var(--road-yellow);
+            float: right;
+        }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-item input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .plan-btn {
+            background-color: var(--sign-white);
+            color: var(--sign-green);
+            border: none;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.2s;
+        }
+
+        .plan-btn:hover {
+            background-color: var(--road-yellow);
+            transform: scale(1.03);
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            border-top: 1px dashed white;
+            padding-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="app-box">
-        <h1>ONTARIO WINGMAN 🏍️</h1>
-        <p><i>The Step-Dad's Road Assistant</i></p>
-        
-        <input type="text" id="start" placeholder="Starting Point (e.g. Bowmanville)">
-        <input type="text" id="end" placeholder="Destination (e.g. Gravenhurst)">
+    <div class="highway-sign">
+        <h1>Biker's Guide</h1>
+        <span class="subtitle">ONTARIO ROAD ASSISTANT</span>
 
-        <div class="stops">
-            <strong>Add Stops For:</strong><br><br>
-            <input type="checkbox" id="tart" checked> <label for="tart">Butter Tarts / Bakeries 🥧</label><br>
-            <input type="checkbox" id="gas" checked> <label for="gas">Shell / Petro (Gas) ⛽</label><br>
-            <input type="checkbox" id="burger"> <label for="burger">Roadside Diners 🍔</label><br>
-            <input type="checkbox" id="scenic"> <label for="scenic">Lake Views 🌊</label>
+        <div class="form-group">
+            <label>Starting Point</label>
+            <input type="text" id="start" placeholder="e.g. Toronto">
         </div>
 
-        <button class="go-btn" onclick="startRide()">PLAN THE RIDE</button>
+        <div class="form-group">
+            <label>Destination</label>
+            <input type="text" id="end" placeholder="e.g. Muskoka">
+        </div>
 
-        <div class="footer-joke" id="wisdom">
-            "Watch out for the OPP on the 401!"
+        <div class="slider-container">
+            <label>Ride Duration <span class="value-display" id="hourLabel">4 Hours</span></label>
+            <input type="range" min="1" max="12" value="4" class="slider" id="hourSlider">
+        </div>
+
+        <div class="slider-container">
+            <label>Riding Buddies <span class="value-display" id="buddyLabel">1 Rider</span></label>
+            <input type="range" min="1" max="20" value="1" class="slider" id="buddySlider">
+        </div>
+
+        <div class="form-group">
+            <label>Custom Stops (e.g. Scenic Lookouts, Parks)</label>
+            <input type="text" id="customStops" placeholder="Any specific spots?">
+        </div>
+
+        <div class="form-group">
+            <label>Route Essentials</label>
+            <div class="checkbox-grid">
+                <div class="checkbox-item"><input type="checkbox" id="gas" checked> Gas Stations</div>
+                <div class="checkbox-item"><input type="checkbox" id="food" checked> Roadside Diners</div>
+                <div class="checkbox-item"><input type="checkbox" id="rest"> Rest Areas</div>
+                <div class="checkbox-item"><input type="checkbox" id="lake"> Lake Views</div>
+            </div>
+        </div>
+
+        <button class="plan-btn" onclick="buildRoute()">PLAN ROUTE</button>
+
+        <div class="footer-note">
+            Merry Christmas, Rio! Built with care. Watch for deer! 🦌
         </div>
     </div>
 
     <script>
-        function startRide() {
+        // Update slider labels
+        const hourSlider = document.getElementById('hourSlider');
+        const hourLabel = document.getElementById('hourLabel');
+        hourSlider.oninput = function() { hourLabel.innerHTML = this.value + " Hours"; }
+
+        const buddySlider = document.getElementById('buddySlider');
+        const buddyLabel = document.getElementById('buddyLabel');
+        buddySlider.oninput = function() { 
+            buddyLabel.innerHTML = this.value == 1 ? "Solo Ride" : this.value + " Riders"; 
+        }
+
+        function buildRoute() {
             const start = document.getElementById('start').value;
             const end = document.getElementById('end').value;
+            const stops = document.getElementById('customStops').value;
             
             if(!start || !end) {
-                alert("Enter the route, Boss!");
+                alert("Please enter a start and end point!");
                 return;
             }
 
-            // Creating a search query for Google Maps
-            let query = "";
-            if(document.getElementById('tart').checked) query += "+bakery+butter+tarts";
-            if(document.getElementById('gas').checked) query += "+gas+station";
-            if(document.getElementById('burger').checked) query += "+burgers+and+fries";
-            if(document.getElementById('scenic').checked) query += "+scenic+lookout";
+            // Generate Google Maps Search Query
+            let searchQuery = "";
+            if(document.getElementById('gas').checked) searchQuery += " gas stations";
+            if(document.getElementById('food').checked) searchQuery += " restaurants";
+            if(document.getElementById('rest').checked) searchQuery += " rest areas";
+            if(document.getElementById('lake').checked) searchQuery += " scenic lookouts";
+            if(stops) searchQuery += " " + stops;
 
-            const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(start)}&destination=${encodeURIComponent(end)}&travelmode=driving`;
+            const mapsUrl = `https://www.google.com/maps/dir/${encodeURIComponent(start)}/${encodeURIComponent(end)}/`;
             
-            // Note: Google Maps usually opens the search query in the sidebar/nearby
+            // This opens the route. He can then use the "Search along route" feature in Maps
             window.open(mapsUrl, '_blank');
-            
-            document.getElementById('wisdom').innerText = "Ride safe. Keep the shiny side up!";
         }
     </script>
 </body>
